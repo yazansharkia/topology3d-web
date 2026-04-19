@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" width="240" height="48">
+  <defs>
+    <style>
+      .t3d-mark { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+                  font-size: 10px; letter-spacing: 4px; fill: #c9aa72; font-weight: 500; }
+      .t3d-word { font-family: Georgia, 'Times New Roman', serif;
+                  font-size: 20px; fill: #eceae3; font-weight: 400; }
+      .t3d-word-it { font-family: Georgia, 'Times New Roman', serif;
+                     font-size: 20px; fill: #c9aa72; font-style: italic; font-weight: 400; }
+      .t3d-rule { stroke: #6e5c38; stroke-width: 1; }
+    </style>
+  </defs>
+  <!-- small mark + rule -->
+  <text class="t3d-mark" x="0" y="14">TOPOLOGY</text>
+  <line class="t3d-rule" x1="78" y1="11" x2="96" y2="11"/>
+  <text class="t3d-mark" x="100" y="14">3D</text>
+  <!-- wordmark -->
+  <text class="t3d-word" x="0" y="40">Topology<tspan class="t3d-word-it">3D</tspan></text>
+</svg>

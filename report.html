@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topology3D &mdash; Measurement Report &mdash; Yazan Sharkia</title>
+
+<style>
+/* ─────────────────────────────────────────────
+   Screen styles (white paper on neutral backdrop)
+   ───────────────────────────────────────────── */
+:root {
+  --paper:    #ffffff;
+  --ink:      #1a1a1a;
+  --ink-soft: #55544f;
+  --ink-faint:#a6a39c;
+  --rule:     #d9d6cf;
+  --accent:   #8a7650;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #eae8e3;
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.toolbar {
+  max-width: 820px; margin: 24px auto 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; gap: 16px; flex-wrap: wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #55544f;
+}
+.toolbar a, .toolbar button {
+  font: inherit; color: inherit; cursor: pointer;
+  border: 1px solid #c8c5bd; background: #fff;
+  padding: 10px 16px; border-radius: 3px; text-decoration: none;
+  transition: all 0.2s;
+}
+.toolbar a:hover, .toolbar button:hover {
+  border-color: var(--accent); color: var(--accent);
+}
+.toolbar button.primary {
+  background: var(--ink); color: #fff; border-color: var(--ink);
+}
+.toolbar button.primary:hover {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+}
+
+.paper {
+  max-width: 820px; margin: 0 auto 48px;
+  background: var(--paper);
+  padding: 64px 72px;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.08);
+  min-height: 1040px;
+}
+
+/* ─────────────────────────────────────────────
+   Header
+   ───────────────────────────────────────────── */
+.header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px; border-bottom: 1px solid var(--ink);
+  margin-bottom: 40px;
+}
+.header .mark {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; letter-spacing: 4px; color: var(--accent);
+  margin-bottom: 8px;
+}
+.header h1 {
+  font-size: 32px; font-weight: 400; letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.header h1 .italic { font-style: italic; color: var(--accent); }
+.header .meta {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-soft); text-align: right;
+}
+.header .meta .label { color: var(--ink-faint); }
+.header .meta .val { color: var(--ink); display: block; margin-bottom: 10px; }
+.header .meta .val:last-child { margin-bottom: 0; }
+
+/* ─────────────────────────────────────────────
+   Client block
+   ───────────────────────────────────────────── */
+.client {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  margin-bottom: 44px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.client .item { padding: 18px 0; }
+.client .item + .item { border-left: 1px solid var(--rule); padding-left: 24px; }
+.client .label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 9px; letter-spacing: 2px; color: var(--ink-faint);
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.client .val { font-size: 18px; color: var(--ink); }
+
+/* ─────────────────────────────────────────────
+   Measurements table
+   ───────────────────────────────────────────── */
+.section-title {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.section-title::after {
+  content: ''; display: inline-block; flex: 1;
+  height: 1px; background: var(--rule); min-width: 40px;
+}
+
+.meas-table {
+  width: 100%; border-collapse: collapse; margin-bottom: 40px;
+}
+.meas-table th, .meas-table td {
+  padding: 16px 0; border-bottom: 1px solid var(--rule);
+  text-align: left; vertical-align: baseline;
+}
+.meas-table th {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 9px; letter-spacing: 2px; color: var(--ink-faint);
+  text-transform: uppercase; font-weight: 500;
+  border-bottom: 1px solid var(--ink);
+}
+.meas-table td.name { font-size: 17px; color: var(--ink); }
+.meas-table td.val  {
+  text-align: right; font-size: 22px; font-weight: 400;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--ink);
+}
+.meas-table td.val .unit {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px; color: var(--ink-faint); margin-left: 6px;
+}
+
+/* Note block */
+.note {
+  font-size: 13px; color: var(--ink-soft); font-style: italic;
+  margin-bottom: 52px; padding-left: 16px;
+  border-left: 2px solid var(--accent);
+}
+
+/* ─────────────────────────────────────────────
+   Shoemaker notes (blank lines to write on)
+   ───────────────────────────────────────────── */
+.notes-block { margin-bottom: 40px; }
+.notes-lines {
+  margin-top: 16px;
+  background-image: linear-gradient(to bottom, transparent 0 31px, var(--rule) 31px 32px);
+  background-size: 100% 32px;
+  min-height: 192px;   /* 6 lines */
+}
+
+/* ─────────────────────────────────────────────
+   Report footer
+   ───────────────────────────────────────────── */
+.report-footer {
+  margin-top: 40px; padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 9px; letter-spacing: 2px; color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────
+   Print styles
+   ───────────────────────────────────────────── */
+@media print {
+  @page { size: A4; margin: 16mm; }
+  html, body { background: #fff !important; }
+  .toolbar   { display: none !important; }
+  .paper {
+    max-width: none; margin: 0; padding: 0;
+    box-shadow: none; min-height: 0;
+  }
+  .note { page-break-inside: avoid; }
+  .notes-block { page-break-inside: avoid; }
+}
+
+@media (max-width: 640px) {
+  .paper { padding: 32px 24px; }
+  .header { flex-direction: column; gap: 18px; }
+  .header .meta { text-align: left; }
+  .client { grid-template-columns: 1fr; }
+  .client .item + .item { border-left: none; padding-left: 0;
+    border-top: 1px solid var(--rule); }
+}
+</style>
+</head>
+<body>
+
+<!-- ─────────────────────────────────────────────
+     Toolbar (hidden on print)
+     ───────────────────────────────────────────── -->
+<div class="toolbar">
+  <a href="index.html">&larr; Back</a>
+  <button class="primary" onclick="window.print()">Print report &nbsp;&#8984;P</button>
+</div>
+
+<!-- ─────────────────────────────────────────────
+     Report
+     ───────────────────────────────────────────── -->
+<article class="paper">
+
+  <header class="header">
+    <div>
+      <div class="mark">TOPOLOGY &mdash; 3D</div>
+      <h1>Measurement <span class="italic">Report</span></h1>
+    </div>
+    <div class="meta">
+      <span class="label">Report ID</span>
+      <span class="val">T3D-2026-04-01</span>
+      <span class="label">Issued</span>
+      <span class="val">April 2026</span>
+    </div>
+  </header>
+
+  <div class="client">
+    <div class="item">
+      <div class="label">Client</div>
+      <div class="val">Yazan Sharkia</div>
+    </div>
+    <div class="item">
+      <div class="label">Date of scan</div>
+      <div class="val">April 2026</div>
+    </div>
+    <div class="item">
+      <div class="label">Foot</div>
+      <div class="val">Right</div>
+    </div>
+  </div>
+
+  <div class="section-title">Measurements</div>
+  <table class="meas-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th style="text-align: right;">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">Foot length</td>
+        <td class="val">255.4<span class="unit">mm</span></td>
+      </tr>
+      <tr>
+        <td class="name">Ball width</td>
+        <td class="val">73.8<span class="unit">mm</span></td>
+      </tr>
+      <tr>
+        <td class="name">Heel width</td>
+        <td class="val">63.1<span class="unit">mm</span></td>
+      </tr>
+      <tr>
+        <td class="name">EU size</td>
+        <td class="val">40.6<span class="unit">eu</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">Captured via iPhone LiDAR scanner. Processed with the FIND parametric foot model (University of Cambridge). Measurements extracted directly from the fitted mesh.</p>
+
+  <div class="notes-block">
+    <div class="section-title">Shoemaker&rsquo;s notes</div>
+    <div class="notes-lines"></div>
+  </div>
+
+  <footer class="report-footer">
+    <span>Topology 3D &nbsp;&middot;&nbsp; Heidelberg, Germany</span>
+    <span>topology3d.com</span>
+  </footer>
+
+</article>
+
+</body>
+</html>
