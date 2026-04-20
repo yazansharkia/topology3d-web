@@ -409,8 +409,24 @@ section:last-of-type { border-bottom: none; }
 @media (max-width: 420px) {
   .metric-card { padding: 20px 18px 18px; }
 }
-.metric-strip-girths { margin-top: 12px; }
-.metric-strip-girths .metric-label { color: var(--muted); }
+/* Solo-card row (for a single validated girth below the main strip). */
+.metric-strip-solo {
+  display: flex;
+  margin-top: 12px;
+  gap: 1px;
+}
+.metric-strip-solo .metric-card {
+  flex: 0 0 auto;
+  min-width: 260px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px 28px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+@media (max-width: 520px) {
+  .metric-strip-solo .metric-card { flex: 1 1 auto; min-width: 0; }
+}
 
 .viewer-caption {
   margin-top: 20px;
@@ -578,6 +594,7 @@ section:last-of-type { border-bottom: none; }
   font-family: var(--mono); color: var(--text); width: 180px;
 }
 .atable tr.highlight td.num { color: var(--gold); }
+.atable td.diff { color: var(--gold); font-weight: 500; }
 .atable td.method { color: var(--muted); }
 .atable tr.highlight td.method { color: var(--text); font-weight: 500; }
 
@@ -748,23 +765,11 @@ footer .sep { color: var(--gold-dim); margin: 0 10px; }
       </div>
     </div>
 
-    <!-- Metric strip (row 2: girths — the bespoke numbers) -->
-    <div class="metric-strip metric-strip-girths">
+    <!-- Metric strip (row 2: single validated girth) -->
+    <div class="metric-strip-solo">
       <div class="metric-card">
         <div class="metric-label">Ball girth</div>
         <div class="metric-value">239.7<span class="metric-unit">mm</span></div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Waist girth</div>
-        <div class="metric-value">238.5<span class="metric-unit">mm</span></div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Instep girth</div>
-        <div class="metric-value">275.4<span class="metric-unit">mm</span></div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Heel girth</div>
-        <div class="metric-value">360.4<span class="metric-unit">mm</span></div>
       </div>
     </div>
 
@@ -772,7 +777,7 @@ footer .sep { color: var(--gold-dim); margin: 0 10px; }
       Captured with <strong>iPhone LiDAR</strong> in 2 minutes. Processed with the
       <strong>FIND parametric foot model</strong> from University of Cambridge.
       Ball width is the diagonal distance between the 1st and 5th metatarsal
-      heads; girths are tape-measure circumferences at each landmark.
+      heads; ball girth is the tape-measure circumference through those landmarks.
     </p>
   </div>
 </section>
@@ -949,24 +954,36 @@ footer .sep { color: var(--gold-dim); margin: 0 10px; }
       <table class="atable">
         <thead>
           <tr>
-            <th>Method</th>
-            <th>Foot length</th>
+            <th>Measurement</th>
+            <th>Topology3D</th>
+            <th>Manual</th>
+            <th>Difference</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="highlight">
-            <td class="method">Topology3D LiDAR scan</td>
+          <tr>
+            <td class="method">Foot length</td>
             <td class="num">255.4 mm</td>
+            <td class="num">256.1 mm</td>
+            <td class="num diff">0.7 mm</td>
           </tr>
           <tr>
-            <td class="method">Manual measurement</td>
-            <td class="num">256.1 mm</td>
+            <td class="method">Ball girth</td>
+            <td class="num">239.7 mm</td>
+            <td class="num">~242 mm</td>
+            <td class="num diff">~2 mm</td>
+          </tr>
+          <tr>
+            <td class="method">Ball width</td>
+            <td class="num">92.8 mm</td>
+            <td class="num">~94 mm</td>
+            <td class="num diff">~1.5 mm</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p class="verdict">Within &plusmn;1.5&thinsp;mm accuracy.</p>
+    <p class="verdict">Within &plusmn;1.5&thinsp;mm on length, &plusmn;2&thinsp;mm on girths and widths.</p>
     <p class="fine">Surface fitting accuracy: 1.42&thinsp;mm median (mesh-to-cloud distance, manually verified scan data).</p>
   </div>
 </section>

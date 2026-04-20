@@ -140,6 +140,23 @@ html, body {
   font-size: 10px; color: var(--ink-faint); letter-spacing: 0.5px;
   margin-left: 6px;
 }
+
+/* Pending-validation section — lower contrast so it's clearly secondary */
+.section-title.pending {
+  color: var(--ink-faint);
+}
+.section-title.pending::after {
+  background: var(--ink-faint);
+}
+.pending-table td.name { color: var(--ink-soft); }
+.pending-table td.val  { color: var(--ink-soft); }
+.pending-note {
+  margin-top: 12px;
+  font-size: 12px; font-style: italic;
+  color: var(--ink-faint);
+  padding-left: 16px;
+  border-left: 1px solid var(--rule);
+}
 .meas-table td.val  {
   text-align: right; font-size: 22px; font-weight: 400;
   font-family: Georgia, 'Times New Roman', serif;
@@ -248,7 +265,7 @@ html, body {
     </div>
   </div>
 
-  <div class="section-title">Lengths &amp; widths</div>
+  <div class="section-title">Measurements</div>
   <table class="meas-table">
     <thead>
       <tr>
@@ -270,14 +287,18 @@ html, body {
         <td class="val">73.2<span class="unit">mm</span></td>
       </tr>
       <tr>
+        <td class="name">Ball girth <span class="sub">&mdash; through 1<sup>st</sup> and 5<sup>th</sup> met heads</span></td>
+        <td class="val">239.7<span class="unit">mm</span></td>
+      </tr>
+      <tr>
         <td class="name">EU size</td>
         <td class="val">40.6<span class="unit">eu</span></td>
       </tr>
     </tbody>
   </table>
 
-  <div class="section-title" style="margin-top: 28px;">Girths (tape-measure circumferences)</div>
-  <table class="meas-table">
+  <div class="section-title pending" style="margin-top: 28px;">Additional measurements (pending validation)</div>
+  <table class="meas-table pending-table">
     <thead>
       <tr>
         <th>Girth</th>
@@ -285,10 +306,6 @@ html, body {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="name">Ball girth <span class="sub">&mdash; through 1<sup>st</sup> and 5<sup>th</sup> met heads</span></td>
-        <td class="val">239.7<span class="unit">mm</span></td>
-      </tr>
       <tr>
         <td class="name">Waist girth <span class="sub">&mdash; narrowest midfoot</span></td>
         <td class="val">238.5<span class="unit">mm</span></td>
@@ -303,6 +320,7 @@ html, body {
       </tr>
     </tbody>
   </table>
+  <p class="pending-note">Computed directly from the fitted mesh but not yet validated against manual tape measurement. Treat as indicative only.</p>
 
   <p class="note">Captured via iPhone LiDAR scanner. Processed with the FIND parametric foot model (University of Cambridge). All values extracted directly from the fitted mesh: widths via landmark-to-landmark distance, girths via exact planar cross-section perimeter.</p>
 
