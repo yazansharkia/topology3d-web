@@ -409,6 +409,8 @@ section:last-of-type { border-bottom: none; }
 @media (max-width: 420px) {
   .metric-card { padding: 20px 18px 18px; }
 }
+.metric-strip-girths { margin-top: 12px; }
+.metric-strip-girths .metric-label { color: var(--muted); }
 
 .viewer-caption {
   margin-top: 20px;
@@ -726,7 +728,7 @@ footer .sep { color: var(--gold-dim); margin: 0 10px; }
       </div>
     </div>
 
-    <!-- Metric strip (4 cards below the viewer) -->
+    <!-- Metric strip (row 1: lengths & widths) -->
     <div class="metric-strip">
       <div class="metric-card">
         <div class="metric-label">Foot length</div>
@@ -734,11 +736,11 @@ footer .sep { color: var(--gold-dim); margin: 0 10px; }
       </div>
       <div class="metric-card">
         <div class="metric-label">Ball width</div>
-        <div class="metric-value">73.8<span class="metric-unit">mm</span></div>
+        <div class="metric-value">92.8<span class="metric-unit">mm</span></div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Heel width</div>
-        <div class="metric-value">63.1<span class="metric-unit">mm</span></div>
+        <div class="metric-value">73.2<span class="metric-unit">mm</span></div>
       </div>
       <div class="metric-card">
         <div class="metric-label">EU size</div>
@@ -746,9 +748,31 @@ footer .sep { color: var(--gold-dim); margin: 0 10px; }
       </div>
     </div>
 
+    <!-- Metric strip (row 2: girths — the bespoke numbers) -->
+    <div class="metric-strip metric-strip-girths">
+      <div class="metric-card">
+        <div class="metric-label">Ball girth</div>
+        <div class="metric-value">239.7<span class="metric-unit">mm</span></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Waist girth</div>
+        <div class="metric-value">238.5<span class="metric-unit">mm</span></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Instep girth</div>
+        <div class="metric-value">275.4<span class="metric-unit">mm</span></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Heel girth</div>
+        <div class="metric-value">360.4<span class="metric-unit">mm</span></div>
+      </div>
+    </div>
+
     <p class="viewer-caption">
       Captured with <strong>iPhone LiDAR</strong> in 2 minutes. Processed with the
       <strong>FIND parametric foot model</strong> from University of Cambridge.
+      Ball width is the diagonal distance between the 1st and 5th metatarsal
+      heads; girths are tape-measure circumferences at each landmark.
     </p>
   </div>
 </section>

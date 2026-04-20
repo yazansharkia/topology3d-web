@@ -1,0 +1,23 @@
+{
+  "foot_length_mm": 255.4,
+  "heel_width_mm": 73.2,
+  "ball_width_mm": 92.8,
+  "ball_girth_mm": 239.7,
+  "waist_girth_mm": 238.5,
+  "instep_girth_mm": 275.4,
+  "heel_girth_mm": 360.4,
+  "metatarsal_head_1_mm": [
+    40.82,
+    -416.65,
+    -47.26
+  ],
+  "metatarsal_head_5_mm": [
+    -9.63,
+    -405.43,
+    30.66
+  ],
+  "waist_at_length_pct": 50.0,
+  "instep_at_length_pct": 35.0,
+  "heel_at_length_pct": 24.9,
+  "eu_size": 40.6
+}

@@ -135,6 +135,11 @@ html, body {
   border-bottom: 1px solid var(--ink);
 }
 .meas-table td.name { font-size: 17px; color: var(--ink); }
+.meas-table td.name .sub {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; color: var(--ink-faint); letter-spacing: 0.5px;
+  margin-left: 6px;
+}
 .meas-table td.val  {
   text-align: right; font-size: 22px; font-weight: 400;
   font-family: Georgia, 'Times New Roman', serif;
@@ -243,7 +248,7 @@ html, body {
     </div>
   </div>
 
-  <div class="section-title">Measurements</div>
+  <div class="section-title">Lengths &amp; widths</div>
   <table class="meas-table">
     <thead>
       <tr>
@@ -257,12 +262,12 @@ html, body {
         <td class="val">255.4<span class="unit">mm</span></td>
       </tr>
       <tr>
-        <td class="name">Ball width</td>
-        <td class="val">73.8<span class="unit">mm</span></td>
+        <td class="name">Ball width <span class="sub">&mdash; diagonal 1<sup>st</sup> &mdash; 5<sup>th</sup> met head</span></td>
+        <td class="val">92.8<span class="unit">mm</span></td>
       </tr>
       <tr>
         <td class="name">Heel width</td>
-        <td class="val">63.1<span class="unit">mm</span></td>
+        <td class="val">73.2<span class="unit">mm</span></td>
       </tr>
       <tr>
         <td class="name">EU size</td>
@@ -271,7 +276,35 @@ html, body {
     </tbody>
   </table>
 
-  <p class="note">Captured via iPhone LiDAR scanner. Processed with the FIND parametric foot model (University of Cambridge). Measurements extracted directly from the fitted mesh.</p>
+  <div class="section-title" style="margin-top: 28px;">Girths (tape-measure circumferences)</div>
+  <table class="meas-table">
+    <thead>
+      <tr>
+        <th>Girth</th>
+        <th style="text-align: right;">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">Ball girth <span class="sub">&mdash; through 1<sup>st</sup> and 5<sup>th</sup> met heads</span></td>
+        <td class="val">239.7<span class="unit">mm</span></td>
+      </tr>
+      <tr>
+        <td class="name">Waist girth <span class="sub">&mdash; narrowest midfoot</span></td>
+        <td class="val">238.5<span class="unit">mm</span></td>
+      </tr>
+      <tr>
+        <td class="name">Instep girth <span class="sub">&mdash; highest dorsum</span></td>
+        <td class="val">275.4<span class="unit">mm</span></td>
+      </tr>
+      <tr>
+        <td class="name">Heel girth <span class="sub">&mdash; heel-instep cross-section</span></td>
+        <td class="val">360.4<span class="unit">mm</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">Captured via iPhone LiDAR scanner. Processed with the FIND parametric foot model (University of Cambridge). All values extracted directly from the fitted mesh: widths via landmark-to-landmark distance, girths via exact planar cross-section perimeter.</p>
 
   <div class="notes-block">
     <div class="section-title">Shoemaker&rsquo;s notes</div>
